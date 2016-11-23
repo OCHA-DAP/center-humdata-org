@@ -1,1 +1,1 @@
-# center-humdata-org
+# centre-humdata-org
