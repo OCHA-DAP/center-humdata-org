@@ -6,7 +6,8 @@ var gulp   = require('gulp'),
     merge = require('merge-stream'),
     runSequence = require('run-sequence'),
 		browserSync = require('browser-sync').create(),
-		reload = browserSync.reload;
+		reload = browserSync.reload,
+    ghPages = require('gulp-gh-pages');
 
 gulp.task('build-js', function() {
   return gulp.src('src/js/**/*.js')
@@ -52,6 +53,11 @@ gulp.task('clean', function() {
 
 gulp.task('clean-js', function() {
    del.sync('dist/js');
+});
+
+gulp.task('deploy', function() {
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages());
 });
 
 // Static server
