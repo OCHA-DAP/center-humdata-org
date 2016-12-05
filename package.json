@@ -24,9 +24,6 @@
     "handlebars": "^4.0.6",
     "jquery": "^3.1.1",
     "normalize.css": "^5.0.0",
-    "scrollmagic": "^2.0.5",
-    "packery": "^2.1.1",
-    "imagesloaded": "^4.1.1",
-    "masonry-layout": "^4.1.1"
+    "scrollmagic": "^2.0.5"
   }
 }

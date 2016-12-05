@@ -8,13 +8,6 @@ var gulp   = require('gulp'),
 		browserSync = require('browser-sync').create(),
 		reload = browserSync.reload;
 
-
-gulp.task('jshint', function() {
-  return gulp.src('src/js/**/*.js')
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'));
-});
-
 gulp.task('build-js', function() {
   return gulp.src('src/js/**/*.js')
     .pipe(concat('bundle.js'))
@@ -43,10 +36,7 @@ gulp.task('copy-resources', function() {
   	'./node_modules/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
   	'./node_modules/handlebars/dist/handlebars.min.js',
   	'./node_modules/gsap/src/minified/jquery.gsap.min.js',
-  	'./node_modules/jquery/dist/jquery.min.js',
-  	'./node_modules/masonry-layout/dist/masonry.pkgd.min.js',
-  	'./node_modules/imagesloaded/imagesloaded.pkgd.min.js',
-  	'./node_modules/packery/dist/packery.pkgd.min.js'
+  	'./node_modules/jquery/dist/jquery.min.js'
   	])
     .pipe(gulp.dest('dist/vendors'));
 
@@ -75,9 +65,6 @@ gulp.task('build', function() {
     reloadDelay: 100,
     browser: 'google chrome'
   });
-	// gulp.watch('src/**/*.html', ['build-html']);
- //  gulp.watch('src/js/**/*.js', ['build-js']);
-	// gulp.watch('src/scss/**/*.scss', ['build-css']);
 
 		gulp.watch('src/**/*.html').on('change', function(){
        runSequence('build-html', reload);
