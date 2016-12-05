@@ -1,0 +1,94 @@
+#gallery{
+	.row-fluid {
+		[class*="span"]{
+			box-sizing: border-box;
+			display: block;
+		    float: left;
+		    margin-left: 0px !important;
+		    position: relative; 
+		    overflow: visible;   
+			width: 100%;
+		}
+		.span12 {
+    		width: 100% !important;
+		}
+		.span8 {
+    		width: 66.666666666667% !important;
+		}
+		.span6 {
+    		width: 50% !important;
+		}
+		.span4 {
+    		width: 33.333333333333% !important;
+		}
+	}
+
+	.content {
+	    // height: 0;
+    	// padding-bottom: 100%;
+   		position: relative;
+    	width: 100%;
+	 //    .image {
+		//     height: 100%;
+		//     left: 0;
+		//     position: absolute;
+		//     top: 0;
+		//     width: 100%;
+		// }
+		img {
+			display: block;
+		    width: 100%;
+		    height: 100%;
+		 //    display: block;
+			// border: 0;
+		 //    z-index: 100;
+		 //    left: 0;
+		 //    height: auto;
+		 //    max-width: 100%;
+		 //    min-width: 100%;
+		 //    display: block;
+		 //    min-height: 100%;
+		 //    vertical-align: middle;
+		}
+	}
+	.twitter-module{
+		background-color: $blue;
+		color: #FFF;
+		height: 385px;
+		padding: 40px;
+		text-align: left;
+		a {
+			color: #FFF;
+		}
+		.signature{
+			position: absolute;
+			bottom: 40px;
+			i{
+				font-size: 26px;
+				padding-top: 10px;
+			}
+		}
+	}
+
+	@media (max-width: 900px){
+		.row-fluid{
+			> .span8,
+			> .span6, 
+			> .span4 {
+			    width: 100% !important;
+			    > .span6 {
+			    	width: 50% !important;
+			    }
+			}
+		}
+	}
+	@media (max-width: 480px){
+		.row-fluid{
+			.span8,
+			.span6,
+			.span4 {
+		    	width: 100% !important;
+		    }
+		}
+	}
+}
