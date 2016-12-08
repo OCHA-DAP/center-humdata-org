@@ -13,17 +13,20 @@
 $(document).ready(function(){      
   //change nav display based on scroll position 
   var scroll_start = 0;
-  var section = $('#partners');
-  var offset = section.offset();
-  if (section.length){
-    $(document).scroll(function() { 
-      scroll_start = $(this).scrollTop();
-      if(scroll_start > offset.top) {
-        $(".navbar-default").addClass('sticky');
-      } else {
-        $('.navbar-default').removeClass('sticky');
-      }
-    });
+  var stickyPos = 100;
+
+  setNavPos($(this).scrollTop());
+  
+  $(document).scroll(function() { 
+    setNavPos($(this).scrollTop());
+  });
+
+  function setNavPos(scroll_start){
+    if(scroll_start > stickyPos) {
+      $(".navbar-default").addClass('sticky');
+    } else {
+      $('.navbar-default').removeClass('sticky');
+    }
   }
 
 
@@ -40,22 +43,9 @@ $(document).ready(function(){
     }, 500);
   });
 
-  // init Masonry
-  var $grid = $('.grid').masonry({
-    itemSelector: '.grid-item',
-    percentPosition: true,
-    columnWidth: '.grid-sizer'
-  });
-  // layout Isotope after each image loads
-  $grid.imagesLoaded().progress( function() {
-    $grid.masonry();
-  });  
 
-  // $('.grid').packery({
-  //   // options
-  //   itemSelector: '.grid-item',
-  //   gutter: 0
-  // });
+  $('.quote-module').height($('.quote-module').width());
+  $('.twitter-module').height($('.twitter-module').width());
 
 });
 
