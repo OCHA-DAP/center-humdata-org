@@ -6,22 +6,67 @@
 	.navbar-nav{
 		>li{
 			>a {
-				color: #FFF;
+				color: $white;
 			}
 		}
 	}
 	.navbar-brand{
-		background-color: #FFF;
-		color: #000;
+		background-color: $white;
+		color: $black;
 		height: 36px;
 		line-height: 36px;
 		margin-top: 20px;
 		padding: 0 90px;
 		&:hover{
-			background-color: #FFF;
+			background-color: $white;
 		}
 	}
 	&.sticky{
-		background-color: rgba(27,181,128,0.8);
+		background-color: $white;
+		.navbar-nav{
+			> li{
+				> a{
+					color: $green;
+					&:hover{
+						color: $black;
+						span{
+							color: $green;
+						}
+					}
+				}
+			}
+		}
+		.btn{
+			&.nav-btn{
+				border-color: $green;
+				&:hover{
+					border-color: $black;
+					color: $black;
+				}
+			}
+		}
+	}
+}
+/* bootstrap overrides */
+
+
+.nav{
+	height: 100px;
+	padding-top: 20px;
+	> li{	
+		a{
+			font-family: $sans-brandon-bold;
+			font-size: 14px;
+			text-decoration: none;
+			text-transform: uppercase;
+			span{
+				padding-left: 30px;
+			}
+			&:hover{
+				span{
+					color: $white;
+				}
+			}
+		}
 	}
 }

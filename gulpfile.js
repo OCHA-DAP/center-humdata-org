@@ -41,8 +41,11 @@ gulp.task('copy-resources', function() {
   	])
     .pipe(gulp.dest('dist/vendors'));
 
-  var assets = gulp.src('src/img/*')
+  var assets = gulp.src('src/img/**/*')
     .pipe(gulp.dest('dist/assets/img'));
+
+  var fonts = gulp.src('src/fonts/**/*')
+    .pipe(gulp.dest('dist/assets/fonts'));
 
   return merge(js, assets);
 });

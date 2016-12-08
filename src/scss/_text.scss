@@ -1,0 +1,93 @@
+$sans: 'SourceSansPro-Regular';
+$sans-bold: 'SourceSansPro-Bold';
+$sans-brandon: 'Brandon-Regular';
+$sans-brandon-bold: 'Brandon-Bold';
+$serif-light: 'Stag-Light';
+$serif-book: 'Stag-Book';
+$serif-med: 'Stag-Medium';
+$serif-semibold: 'Stag-Semibold';
+
+h1{
+	color: $white;
+	font-family: $sans-brandon-bold;
+	font-size: 50px;
+	letter-spacing: 2px;
+	line-height: 45px;
+	text-align: center;
+	text-transform: uppercase;
+	span{
+		font-family: $sans-brandon;
+		font-size: 24px;
+		letter-spacing: 0;
+		text-transform: none;
+	}
+}
+
+h2{
+	color: $white;
+	font-family: $serif-book;
+	font-size: 36px;
+}
+
+h3{
+	color: $green;
+	font-family: $serif-med;
+	font-size: 30px;
+	margin-bottom: 20px;
+}
+
+h4{
+	color: $green;
+	font-family: $serif-med;
+	font-size: 24px;
+	line-height: 30px;
+	text-transform: none;
+	&.light{
+		font-family: $serif-book;
+	}
+}
+
+h5{
+	color: $white;
+	font-family: $serif-med;
+	font-size: 18px;
+	&.light{
+		font-family: $serif-book;
+	}
+}
+
+h6{
+	color: $gray88;
+	font-family: $sans-bold;
+	font-size: 12px;
+	line-height: 18px;
+	margin-bottom: 5px;
+	text-transform: uppercase;
+}
+
+body{
+	font-family: $sans;
+	font-size: 15px;
+	line-height: 19px;
+}
+
+a{
+	color: $coral;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+p{
+	font-family: $sans;
+	&.large{
+		font-size: 18px;
+		line-height: 24px;
+	}
+	&.small{
+		color: #7b7b7b;
+		font-family: $serif-book;
+		font-size: 10px;
+		line-height: 14px;
+		text-transform: uppercase;
+	}
+}

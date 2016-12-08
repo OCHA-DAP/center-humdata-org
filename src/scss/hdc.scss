@@ -1,30 +1,14 @@
 //@import "particles";
+@import "fonts";
 @import "variables";
+@import "text";
 @import "nav";
 @import "gallery";
 
-a{
-	color: $coral;
-}
-
-h1{
-	color: #FFF;
-	text-align: center;
-}
-h4{
-	color: #FFF;
-	font-weight: normal;
-	text-align: center;
-}
-h5{
-	color: #FFF;
-	text-align: center;
-	span{
-		font-weight: 700;
-	}
-}
 
 ul{
+	margin: 0;
+	padding: 0;
 	li{
 		list-style-type: none;
 	}
@@ -41,21 +25,36 @@ ul{
 
 .btn{
 	margin: 20px 0;
+	text-decoration: none;
 	&.download-btn{
 		background-color: $green;
-		border-radius: 20px;
-		color: #FFF;
-		font-weight: 700;
-		line-height: 40px;
-		padding: 0 50px;
+		border-radius: 30px;
+		color: $white;
+		font-family: $serif-med;
+		font-size: 18px;
+		line-height: 60px;
+		padding: 0 100px;
 		text-transform: uppercase;
 	}
 	&.submit-btn{
-		background-color: #FFF;
+		background-color: #3d3030;
 		border-radius: 0;
-		line-height: 50px;
-		margin-left: 20px;
-		padding: 0 20px;
+		color: $white;
+		font-family: $serif-book;
+		font-size: 24px;
+		line-height: 70px;
+		padding: 0 40px;
+		margin-top: 14px;
+	}
+	&.nav-btn{
+		border: 2px solid $white;
+		border-radius: 20px;
+		margin-top: 3px;
+		margin-left: 40px;
+		padding: 10px 40px;
+		&:hover{
+			border-color: $black;
+		}
 	}
 }
 
@@ -63,9 +62,25 @@ input{
 	border: 0;
 	padding: 0 15px;
 	&#contact-input{
-		line-height: 50px;
+		color: $gray33;
+		font-family: $serif-book;
+		font-size: 24px;
+		line-height: 70px;
 		margin-top: 50px;
-		min-width: 300px;
+		min-width: 448px;
+		padding-left: 35px;
+	}
+	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	  color: #CCC;
+	}
+	&::-moz-placeholder { /* Firefox 19+ */
+	  color: #CCC;
+	}
+	&:-ms-input-placeholder { /* IE 10+ */
+	  color: #CCC;
+	}
+	&:-moz-placeholder { /* Firefox 18- */
+	  color: #CCC;
 	}
 }
 
@@ -97,130 +112,144 @@ section{
 		top: 0;
 		width: 100%;
 	}
-	h5{
-		padding-top: 70px;
-	}
 	.fa-chevron-circle-down{
 		bottom: 25px;
-		color: #FFF;
+		color: $white;
 		cursor: pointer;
 		font-size: 30px;
 		position: absolute;
 	}
 	#counter{
-		color: #FFF;
-		margin-top: 25px;
+		color: $white;
+		font-family: $serif-semibold;
+		font-size: 50px;
+		letter-spacing: 1px;
+		margin-top: 55px;
 		span{
-			background-color: #FFF;
+			background-color: $white;
 			color: $green;
-			font-size: 30px;
+			font-family: $serif-light;
+			font-size: 60px;
 			margin-right: 5px;
-			padding: 12px;
+			padding: 14px 12px 10px;
+			&:last-child{
+				margin-right: 16px;
+			}
 		}
-	}
-}
-
-#partners{
-	height: 60px;
-	.horizontal-list{
-		li{
-			padding-top: 20px;
-		}
-	}
-}
-
-#focusareas{
-	padding: 60px 0;
-	h2{
-		margin-bottom: 30px;
-	}
-	h5{
-		color: #000;
-		margin: 30px 0;
 	}
 	p{
-		margin: 0 auto;
-		width: 60%;
+		margin-top: 80px;
+	}
+}
+
+// #partners{
+// 	height: 60px;
+// 	.horizontal-list{
+// 		li{
+// 			padding-top: 20px;
+// 		}
+// 	}
+// }
+
+#focusareas{
+	padding: 60px 0 80px;
+	p{
+		&.text-center{
+			margin: 0 auto;
+			width: 60%;
+		}
+	}
+	.banner{
+		background-color: $coral;
+		line-height: 45px;
+		margin: 70px auto 40px;
+		width: 250px;
+		h5{	
+			line-height: 45px;
+			span{
+				font-family: $serif-med;	
+				text-decoration: underline;
+			}
+		}
 	}
 	.area{
-		background-color: #FFF;
+		background-color: $white;
 		box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
 		margin-bottom: 30px;
-		padding: 25px;
-		h4{
-			color: $green;
-			text-transform: uppercase;
-		}
+		min-height: 435px;
+		padding: 35px;
 		p{
-			width: 100%;
+			margin-top: 15px;
+		}
+		img{
+			height: 114px;
+			margin-bottom: 15px;
 		}
 	}
 }
 
 #timeline{
-	padding: 60px 0;
+	padding: 85px 0 100px;
 	text-align: left;
-	h5{
-		color: #000;
-		text-align: left;
+	h4{
+		line-height: 24px;
+		margin: 0 0 5px;
 	}
 	.timeline-chart{
 		position: relative;
 		.date-flag{
 			background-color: $green;
-			color: #FFF;
-			font-size: 10px;
-			padding: 3px 0;
+			color: $white;
+			font-family: $serif-med;
+			font-size: 12px;
+			line-height: 30px;
 			width: 35px;
 			text-align: center;
 			margin-left: -35px;
 		}
 		.timeline-item{
-			padding: 0 0 20px 60px;
+			padding: 0 0 15px 60px;
 			position: relative;
 			.track{
-				border-left: 3px solid $green;
+				border-left: 4px solid $green;
 				height: 100%;
-				left: -3px;
+				left: -4px;
 				position: absolute;
-				width: 3px;
+				width: 4px;
 				&.dashed{
-					border-left: 3px dashed $green;
+					border-left: 4px dashed $green;
 					top: 8px;
 				}
 			}
 			&.last{
 				.track{
 					height: 30px;
-
 				}
 			}
-			&:first{
-				.track{
-					top: 0;
-				}
+			&.p-b-40{
+				padding-bottom: 40px;
 			}
 			.box{	
-				background-color: #FFF;
+				background-color: $white;
 				box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
-				padding: 5px 20px 15px;
+				padding: 10px 50px 20px 30px;
 				position: relative;
-				width: 300px;
+				width: 500px;
 				&:before{
-					border: 6px solid $green;
+					border: 8px solid $green;
 					border-radius: 50%;
 					content: "";
 					position: absolute;
-					left: -68px;
-					top: 26px;
+					left: -70px;
+					top: 36px;
 				}
 				&:after{
-					border: 10px solid transparent;
-					border-right-color: #FFF;
+					border: 15px solid transparent;
+					border-right-color: $white;
 					content: "";
 					position: absolute;
 					right: 100%;
-					top: 20px;  
+					top: 30px;  
 				}
 			}
 		}
@@ -228,17 +257,35 @@ section{
 }
 
 #faq{
-	padding: 60px 0;
+	padding: 85px 0;
+	p{
+		margin: 16px 0 40px;
+	}
 	ul{
+		margin-top: 60px;
 		text-align: left;
-		h3{
-			color: $green;
-			font-weight: normal;
-			margin-top: 40px;
-		}
 	}
 }
 
 #contactus{
+	color: $white;
 	padding: 60px 0 120px;
+	p{
+		margin-top: 30px;
+	}
+}
+
+footer{
+	background-color: $gray33;
+	padding: 140px 0;
+	li{
+		line-height: 50px;
+	}
+	h6{
+		color: $gray88;
+		font-family: $serif-book;
+		font-size: 14px;
+		margin-bottom: 15px;
+		text-transform: none;
+	}
 }

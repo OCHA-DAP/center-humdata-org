@@ -1,0 +1,78 @@
+$font-dir-sourcesans: '../fonts/sourcesanspro/';
+$font-dir-stag: '../fonts/stag/';
+$font-dir-brandon: '../fonts/brandon/';
+
+/////////////////////////
+//
+//  SOURCE SANS PRO 
+//
+/////////////////////////
+@font-face {
+  font-family: 'SourceSansPro-Regular';
+  src: url('#{$font-dir-sourcesans}SourceSansPro-Regular.eot');
+  src: url('#{$font-dir-sourcesans}SourceSansPro-Regular.woff') format('woff');
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: 'SourceSansPro-Bold';
+  src: url('#{$font-dir-sourcesans}SourceSansPro-Bold.eot');
+  src: url('#{$font-dir-sourcesans}SourceSansPro-Bold.woff') format('woff');
+  font-style: normal;
+  font-stretch: normal;
+}
+
+/////////////////////////
+//
+//  STAG
+//
+/////////////////////////
+@font-face {
+  font-family: 'Stag-Light';
+  src: url('#{$font-dir-stag}Stag-Light.eot');
+  src: url('#{$font-dir-stag}Stag-Light.woff') format('woff');
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: 'Stag-Book';
+  src: url('#{$font-dir-stag}Stag-Book.eot');
+  src: url('#{$font-dir-stag}Stag-Book.woff') format('woff');
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: 'Stag-Medium';
+  src: url('#{$font-dir-stag}Stag-Medium.eot');
+  src: url('#{$font-dir-stag}Stag-Medium.woff') format('woff');
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: 'Stag-Semibold';
+  src: url('#{$font-dir-stag}Stag-Semibold.eot');
+  src: url('#{$font-dir-stag}Stag-Semibold.woff') format('woff');
+  font-style: normal;
+  font-stretch: normal;
+}
+
+/////////////////////////
+//
+//  BRANDON
+//
+/////////////////////////
+@font-face {
+  font-family: 'Brandon-Bold';
+  src: url('#{$font-dir-brandon}BrandonGrotesque-Bold.eot');
+  src: url('#{$font-dir-brandon}BrandonGrotesque-Bold.woff') format('woff');
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: 'Brandon-Regular';
+  src: url('#{$font-dir-brandon}BrandonGrotesque-Reg.eot');
+  src: url('#{$font-dir-brandon}BrandonGrotesque-Reg.woff') format('woff');
+  font-style: normal;
+  font-stretch: normal;
+}
+

@@ -1,4 +1,32 @@
 $green: #1bb580;
 $light-green: #edfaf8;
-$coral: #ff7d65;
+$coral: #f2645a;
 $blue: #55acee;
+
+$gray2e: #2e2e2e;
+$gray33: #333;
+$gray66: #666;
+$gray88: #888;
+
+$white: #FFF;
+$black: #000;
+
+.twhite{
+	color: $white;
+}
+.tgray33{
+	color: $gray33;
+}
+.tgray66{
+	color: $gray66;
+}
+.tgray88{
+	color: $gray88;
+}
+.tblack{
+	color: $black;
+}
+
+.m-t-100{
+	margin-top: 100px;
+}
