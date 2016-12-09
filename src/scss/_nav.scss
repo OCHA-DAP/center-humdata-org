@@ -70,3 +70,12 @@
 		}
 	}
 }
+
+
+@media (max-width: 768px) {
+	.navbar-default{
+		.navbar-brand{
+			padding: 0 50px;
+		}
+	}
+}

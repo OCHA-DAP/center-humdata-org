@@ -33,8 +33,10 @@ ul{
 		font-family: $serif-med;
 		font-size: 18px;
 		line-height: 60px;
-		padding: 0 100px;
+		max-width: 400px;
+		padding: 0;
 		text-transform: uppercase;
+		width: 100%;
 	}
 	&.submit-btn{
 		background-color: #3d3030;
@@ -67,8 +69,9 @@ input{
 		font-size: 24px;
 		line-height: 70px;
 		margin-top: 50px;
-		min-width: 448px;
+		max-width: 448px;
 		padding-left: 35px;
+		width: 100%;
 	}
 	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 	  color: #CCC;
@@ -234,7 +237,7 @@ section{
 				box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
 				padding: 10px 50px 20px 30px;
 				position: relative;
-				width: 500px;
+				max-width: 500px;
 				&:before{
 					border: 8px solid $green;
 					border-radius: 50%;
@@ -277,7 +280,7 @@ section{
 
 footer{
 	background-color: $gray33;
-	padding: 140px 0;
+	padding: 140px 0 100px;
 	li{
 		line-height: 50px;
 	}
@@ -287,5 +290,40 @@ footer{
 		font-size: 14px;
 		margin-bottom: 15px;
 		text-transform: none;
+	}
+	.row{
+		> div{
+			margin-bottom: 40px;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.container{
+		padding: 0 20px;
+	}
+	#intro{
+		.intro-content{
+			padding: 0 20px;
+		}
+	}
+	#focusareas{
+		.area{
+			padding: 30px;
+		}
+		p{
+			&.text-center{
+				width: 100%;
+			}
+		}
+	}
+	#timeline{
+		.timeline-chart{
+			.timeline-item{
+				.box{
+					padding-right: 30px;
+				}
+			}
+		}
 	}
 }

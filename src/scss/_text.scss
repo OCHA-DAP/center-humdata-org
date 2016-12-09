@@ -91,3 +91,17 @@ p{
 		text-transform: uppercase;
 	}
 }
+
+@media (max-width: 768px) {
+	h1{
+		font-size: 33px;
+		line-height: 36px;
+		span{
+			line-height: 24px !important;
+		}
+	}
+	h4{
+		font-size: 20px;
+		line-height: 26px;
+	}
+}
