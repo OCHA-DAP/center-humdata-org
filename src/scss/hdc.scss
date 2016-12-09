@@ -28,15 +28,21 @@ ul{
 	text-decoration: none;
 	&.download-btn{
 		background-color: $green;
+		border: 2px solid transparent;
 		border-radius: 30px;
 		color: $white;
 		font-family: $serif-med;
 		font-size: 18px;
-		line-height: 60px;
+		line-height: 56px;
 		max-width: 400px;
 		padding: 0;
 		text-transform: uppercase;
 		width: 100%;
+		&:hover{
+			background-color: $white;
+			border: 2px solid $green;
+			color: $green;
+		}
 	}
 	&.submit-btn{
 		background-color: #3d3030;
@@ -44,9 +50,13 @@ ul{
 		color: $white;
 		font-family: $serif-book;
 		font-size: 24px;
-		line-height: 70px;
+		line-height: 68px;
 		padding: 0 40px;
 		margin-top: 14px;
+		&:hover{
+			background-color: $white;
+			color: #3d3030;
+		}
 	}
 	&.nav-btn{
 		border: 2px solid $white;
@@ -54,9 +64,6 @@ ul{
 		margin-top: 3px;
 		margin-left: 40px;
 		padding: 10px 40px;
-		&:hover{
-			border-color: $black;
-		}
 	}
 }
 
@@ -120,6 +127,7 @@ section{
 		color: $white;
 		cursor: pointer;
 		font-size: 30px;
+		margin-left: -13px;
 		position: absolute;
 	}
 	#counter{
@@ -145,15 +153,6 @@ section{
 	}
 }
 
-// #partners{
-// 	height: 60px;
-// 	.horizontal-list{
-// 		li{
-// 			padding-top: 20px;
-// 		}
-// 	}
-// }
-
 #focusareas{
 	padding: 60px 0 80px;
 	p{
@@ -175,7 +174,13 @@ section{
 			}
 		}
 	}
+	#area-container1,
+	#area-container2{
+		//position: relative;
+		//min-height: 465px;
+	}
 	.area{
+		//position: absolute;
 		background-color: $white;
 		box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
 		margin-bottom: 30px;
@@ -208,9 +213,9 @@ section{
 			line-height: 30px;
 			width: 35px;
 			text-align: center;
-			margin-left: -35px;
 		}
 		.timeline-item{
+			margin-left: 35px;
 			padding: 0 0 15px 60px;
 			position: relative;
 			.track{

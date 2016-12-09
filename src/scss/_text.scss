@@ -15,12 +15,15 @@ h1{
 	line-height: 45px;
 	text-align: center;
 	text-transform: uppercase;
-	span{
-		font-family: $sans-brandon;
-		font-size: 24px;
-		letter-spacing: 0;
-		text-transform: none;
-	}
+}
+.subtitle{
+	color: $white;
+	font-family: $sans-brandon;
+	font-size: 24px;
+	letter-spacing: 0;
+	line-height: 32px;
+	text-align: center;
+	text-transform: none;
 }
 
 h2{
@@ -75,6 +78,9 @@ a{
 	color: $coral;
 	cursor: pointer;
 	text-decoration: underline;
+	&:hover{
+		color: lighten( $coral, 20% );
+	}
 }
 
 p{

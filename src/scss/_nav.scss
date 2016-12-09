@@ -2,11 +2,28 @@
 .navbar-default{
 	background-color: transparent;
 	border: 0;
-  	transition: all 0.5s ease;
+  transition: all 0.5s ease;
 	.navbar-nav{
 		>li{
 			>a {
 				color: $white;
+				&.btn{
+					&.nav-btn{
+						border-color: $white;
+					}
+				}
+				&:hover{
+					color: #d1f0e6;
+					span{
+						color: $white;
+					}
+					&.btn{
+						&.nav-btn{
+							background-color: $white;
+							color: $green;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -27,21 +44,25 @@
 			> li{
 				> a{
 					color: $green;
-					&:hover{
-						color: $black;
-						span{
-							color: $green;
+					&.btn{
+						&.nav-btn{
+							background-color: $green;
+							color: $white;
 						}
 					}
-				}
-			}
-		}
-		.btn{
-			&.nav-btn{
-				border-color: $green;
-				&:hover{
-					border-color: $black;
-					color: $black;
+					&:hover{
+						color: lighten($green, 20%);
+						span{
+							color: $green;
+						}					
+						&.btn{
+							&.nav-btn{
+								background-color: $white;
+								border-color: $green;
+								color: $green;
+							}
+						}
+					}
 				}
 			}
 		}
@@ -54,18 +75,13 @@
 	height: 100px;
 	padding-top: 20px;
 	> li{	
-		a{
+		> a{
 			font-family: $sans-brandon-bold;
 			font-size: 14px;
 			text-decoration: none;
 			text-transform: uppercase;
 			span{
 				padding-left: 30px;
-			}
-			&:hover{
-				span{
-					color: $white;
-				}
 			}
 		}
 	}

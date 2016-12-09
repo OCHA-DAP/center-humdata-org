@@ -1,6 +1,6 @@
 (function() {
 	var counter = window.counter = {
-		TARGETDATE: new Date('2017,2,1'),
+		TARGETDATE: new Date('2017,3,19'),
 
 		countdown: function(){
 			var today = new Date();

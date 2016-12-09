@@ -35,6 +35,8 @@ gulp.task('copy-resources', function() {
   var js = gulp.src([
   	'./node_modules/bootstrap/dist/js/bootstrap.min.js',
   	'./node_modules/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
+    './node_modules/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js',
+    './node_modules/gsap/src/minified/TweenMax.min.js',
   	'./node_modules/handlebars/dist/handlebars.min.js',
   	'./node_modules/gsap/src/minified/jquery.gsap.min.js',
   	'./node_modules/jquery/dist/jquery.min.js'
@@ -47,7 +49,10 @@ gulp.task('copy-resources', function() {
   var fonts = gulp.src('src/fonts/**/*')
     .pipe(gulp.dest('dist/assets/fonts'));
 
-  return merge(js, assets);
+  var data = gulp.src('src/data/**/*')
+    .pipe(gulp.dest('dist/data'));
+
+  return merge(js, assets, fonts, data);
 });
 
 gulp.task('clean', function() {
