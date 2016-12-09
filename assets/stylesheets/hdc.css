@@ -322,6 +322,14 @@ ul.horizontal-list li {
 ul.horizontal-list li:last-child {
   margin-right: 0; }
 
+ul.bulleted {
+  list-style-image: url("../img/icons/bulletArrow.svg");
+  list-style-position: inside;
+  margin-left: 25px; }
+
+ul.bulleted li {
+  margin-bottom: 5px; }
+
 .btn {
   margin: 20px 0;
   text-decoration: none; }
@@ -555,9 +563,15 @@ section {
 #faq p {
   margin: 16px 0 40px; }
 
+#faq p.m-b-20 {
+  margin-bottom: 20px; }
+
 #faq ul {
   margin-top: 60px;
   text-align: left; }
+
+#faq ul.bulleted {
+  margin-top: 5px; }
 
 #contactus {
   color: #FFF;
