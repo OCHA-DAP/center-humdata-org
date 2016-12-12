@@ -3,6 +3,37 @@
 	background-color: transparent;
 	border: 0;
   transition: all 0.5s ease;
+  .navbar-toggle{
+  	border: 0;
+  	margin-right: 25px;
+  	margin-top: 15px;
+  	.icon-bar{
+  		background-color: $white;
+  		height: 3px;
+  		width: 30px;
+  		transition: 0.25s ease-in-out;
+  	}
+  	&.expanded{
+  		.icon-bar:nth-child(2){
+  			transform: rotate(45deg);
+  			position: absolute;
+  			top: 15px;
+  			right: 10px;
+  		}
+  		.icon-bar:nth-child(3){
+  			display: none;
+  		}
+  		.icon-bar:nth-child(4){
+  			transform: rotate(-45deg);
+  			position: absolute;
+  			top: 11px;
+  			right: 10px;
+  		}
+  	}
+  	&:hover{
+  		background-color: transparent;
+  	}
+  }
 	.navbar-nav{
 		>li{
 			>a {
@@ -12,6 +43,7 @@
 						border-color: $white;
 					}
 				}
+				&:focus,
 				&:hover{
 					color: #d1f0e6;
 					span{
@@ -40,6 +72,11 @@
 	}
 	&.sticky{
 		background-color: $white;
+		.navbar-toggle{
+			.icon-bar{
+				background-color: $green;
+			}
+		}
 		.navbar-nav{
 			> li{
 				> a{
@@ -72,7 +109,7 @@
 
 
 .nav{
-	height: 100px;
+	//height: 100px;
 	padding-top: 20px;
 	> li{	
 		> a{
@@ -95,3 +132,43 @@
 		}
 	}
 }
+
+@media (max-width: 414px) {
+	.nav{
+		padding: 20px;
+		> li{
+			> a{
+				span{
+					display: none;
+				}
+			}
+		}
+	}
+	.navbar{
+		> .container{
+			padding: 0;
+		}
+	}
+	.navbar-collapse{
+		background-color: rgba(255,255,255,0.9);
+		border: 0;
+		.navbar-nav{
+			> li{
+				> a{
+					color: $green;
+					font-size: 24px;
+					margin-bottom: 20px;
+					&.btn{
+						&.nav-btn{
+							border-color: $green;
+							margin-left: 15px;
+							margin-right: 15px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
