@@ -1,0 +1,38 @@
+{
+	"faq": [
+		{
+			"question": "Why is OCHA establishing the Centre?",
+			"answer": "OCHA has seen an increase in demand for its data services in recent years. As the HDX platform has gained traction, a broader set of data-related challenges have become apparent. This includes varying abilities of humanitarians to work with data and the need for frameworks to govern the responsible data use in crisis settings. The Centre will take on this broader set of challenges with the goal of increasing the use and impact of data in the humanitarian sector. The Centre is a key contribution towards the Secretary-General’s Agenda for Humanity under core commitment four - changing the way we work to end need."
+		},
+		{
+			"question": "Who is the Centre for?",
+			"answer": "The Centre is open to supporting humanitarian partners and OCHA staff in the field and at headquarters who work in both technical and non-technical roles. The partners include UN agencies, international, national and sub-national NGOs, affected people, academia, the private sector, governments and regional bodies involved in humanitarian action."
+		},
+		{
+			"question": "How can people and organizations work with the Centre?",
+			"answer": "There will be a number of ways for partners to collaborate with the Centre. This includes information sharing, projects and placement of staff into the Centre.",
+			"list": {
+				"header": "Collaboration examples include:",
+				"items": [
+					{
+						"item": "An individual visits the Centre website to find out about community projects and to learn about upcoming events and trainings."
+					},
+					{
+						"item": "An organization shares information with the Centre about a project that needs support and the Centre connects the organization with a partner who can help."
+					},
+					{	
+						"item": "A data manager in the field contacts the Centre with a request to clean data and build a visualization and the Centre creates a project, team and timeline to deliver on the request."
+					}
+				]
+			}
+		},
+		{
+			"question": "What is the relationship between HDX and the Centre?",
+			"answer": "The HDX team is working to set up the Centre and several staff will be based in The Hague by mid 2017. The HDX platform and the HXL data standard will be managed through the Centre bringing with them a functioning service model with an active partner network. This ensures that the Centre is not starting from scratch and can draw on the experience of the existing team as it takes on a wider scope of activities."
+		},
+		{
+			"question": "What is the added value of the Centre?",
+			"answer": "OCHA believes the Centre will help accelerate the changes required for the humanitarian system to become data driven. Institutional data sharing agreements, data standards adoption and technical integration will enable data to move faster across partner systems, and from data collection to use. Data science roles and skills will become common in humanitarian operations and there will be more open, co-working spaces for collaboration across institutions and sectors. These changes will lead to a more effective and efficient humanitarian system."
+		}
+	]
+}

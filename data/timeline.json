@@ -1,0 +1,49 @@
+{
+    "timeline": {
+        "years": [
+            {
+            	"year": "2016",
+            	"events":
+            	[
+					{
+						"date": "May 2016",
+						"header": "World Humanitarian Summit",
+						"copy": "OCHA and the Netherlands <a href=\"http://reliefweb.int/report/world/humanitarian-data-centre-netherlands-will-increase-data-use-and-impact-humanitarian\" target=\"_blank\">announced</a> their intention to establish a new Centre for Humanitarian Data in The Hague as a concrete commitment towards the <a href=\"http://www.agendaforhumanity.org/\" target=\"_blank\">Agenda for Humanity</a>."
+					},
+					{
+						"date": "October 2016",
+						"header": "Design Workshop in The Hague",
+						"copy": "Over forty partners came together to give feedback on the Centre’s business plan and to explore areas of collaboration."
+					},
+					{
+						"date": "November 2016",
+						"header": "Design Workshop in New York",
+						"copy": "Over twenty-five partners met to think through various aspects of the Centre’s business plan and to explore areas of collaboration."
+					}
+				]
+			},
+			{
+            	"year": "2017",
+            	"events":
+            	[
+					{
+						"date": "March 2017",
+						"header": "Centre for Humanitarian Data in The Hague",
+						"copy": "An initial team is based in The Hague to set up the Centre and begin working with partners."
+					},
+					{
+						"date": "August 2017",
+						"header": "The Humanity Hub Opens",
+						"copy": "The city of The Hague establishes the Humanity Hub, a collaborative space for groups working on data and innovation in the social sector."
+					},
+					{
+						"date": "October 2017",
+						"header": "Official Launch of the Centre",
+						"copy": "Public event to formally launch the Centre for Humanitarian Data within the Humanity Hub in The Hague."
+					}
+				]
+			}
+		]
+	}
+}
+		

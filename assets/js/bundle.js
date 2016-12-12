@@ -1,6 +1,6 @@
 (function() {
 	var counter = window.counter = {
-		TARGETDATE: new Date('2017,3,19'),
+		TARGETDATE: new Date('March 19, 2017'),
 
 		countdown: function(){
 			var today = new Date();
@@ -10,20 +10,55 @@
 		}
 	}
 })();
+(function() {
+	var data = window.data = {
+
+		getData: function(url, callback){
+			$.getJSON( url, function( d ) {
+				$(document).trigger(callback ,d);
+			});
+		}
+	};
+})();
 $(document).ready(function(){   
   var controller = new ScrollMagic.Controller();   
   var scroll_start = 0;
   var stickyPos = 50;
+  var quoteArray = [];
+  var quoteID = 0;
+  var quoteIntervalDelay = 5000;
+  var tweetArray = [];
+  var tweetID = 0;
+  var tweetIntervalDelay = 5000;
+  var photoReferenceArray = [];
+  var photoIDArray = [];
+  var photoIntervalDelay = 5000;
 
   init();
 
   function init(){
+    data.getData('data/timeline.json', 'timelineReady');
+    data.getData('data/quotes.json', 'quoteReady');
+    data.getData('data/tweets.json', 'tweetReady');
+    
     setNavPos($(this).scrollTop());
     setCounter();
     setGallery();
 
+    setHandlers();
+    setTweens();
+  }
 
+  //change nav display based on scroll position 
+  function setNavPos(scroll_start){
+    if(scroll_start > stickyPos) {
+      $('.navbar-default').addClass('sticky');
+    } else {
+      $('.navbar-default').removeClass('sticky');
+    }
+  }
 
+  function setTweens(){
     //intro tween
     var introTween = new TimelineMax()
       .add(TweenMax.from($('#intro h1'), 0.5, {opacity:0, ease: Power1.easeOut}), 1)
@@ -38,51 +73,123 @@ $(document).ready(function(){
     .setTween(introTween)
     .addTo(controller);
 
-    //focusareas parallax tween
-    var focusTween = new TimelineMax()
-      .add(TweenMax.from($('#focusareas #area-container1 .area'), 1, {marginTop:'+100px', ease: Power1.easeOut}), 0)
-      .add(TweenMax.from($('#focusareas #area-container1 .area'), 1, {opacity:0, ease: Power1.easeOut}), 0);
-
-    var focusScene = new ScrollMagic.Scene({
-      triggerHook: 'onEnter',
-      triggerElement: '#focusareas #area-container1'
-    })
-    .setTween(focusTween)
-    .addTo(controller);
-
-    var focusTween2 = new TimelineMax()
-      .add(TweenMax.from($('#focusareas #area-container2 .area'), 1, {marginTop:'+100px', ease: Power1.easeNone}), 0)
-      .add(TweenMax.from($('#focusareas #area-container2 .area'), 1, {opacity:0, ease: Power1.easeOut}), 0);
-
-    var focusScene2 = new ScrollMagic.Scene({
-      triggerHook: 'onEnter',
-      triggerElement: '#focusareas #area-container2'
-    })
-    .setTween(focusTween2)
-    .addTo(controller);
-
-
-
-    // var timelineTween = new TimelineMax()
-    //   .add(TweenMax.from($('.timeline-item .box'), 2, {opacity:0, ease: Power1.easeOut}), 0);
-
-    // var timelineScene = new ScrollMagic.Scene({
-    //   triggerHook: 'onEnter',
-    //   triggerElement: '.timeline-item'
-    // })
-    // .setTween(timelineTween)
-    // .addTo(controller);
-
+    //focusareas tween
+    $('#focusareas .area').each(function(){
+      var elem = '#'+$(this).attr('id');
+      var focusScene = new ScrollMagic.Scene({
+        triggerHook: 'onEnter',
+        triggerElement: elem
+      })
+      .setTween( TweenMax.from($(elem), 1, {top:'+100px', opacity: 0, ease: Power1.easeOut}) )
+      .addTo(controller);
+    });
   }
 
-  //change nav display based on scroll position 
-  function setNavPos(scroll_start){
-    if(scroll_start > stickyPos) {
-      $(".navbar-default").addClass('sticky');
-    } else {
-      $('.navbar-default').removeClass('sticky');
-    }
+  function goToByScroll(element){
+    $('html, body').animate({scrollTop: element.offset().top}, 800);
   }
+
+
+/////////////////////////
+//
+//  DATA READY HANDLERS
+//
+/////////////////////////
+
+  //build timeline display
+  $(document).on( 'timelineReady', function(e, data) {
+    var count = 0;
+    $.each( data.timeline.years, function( key, val ) {
+      $('.timeline-chart').append('<div class="date-flag">'+val.year+'</div>');
+      var now = new Date();
+      var isFuture = (val.year > now.getFullYear()) ? true : false;
+      var events = val.events;
+      for (var i=0; i < events.length; i++){
+        var trackType = (isFuture) ? 'dashed' : '';
+        var position = (i==events.length-1 && isFuture) ? 'last' : '';
+        var timelineItem = 'timelineItem'+count;
+        count++;
+        $('.timeline-chart').append('<div id="'+timelineItem+'" class="timeline-item '+position+'"><div class="track '+trackType+'"></div><div class="box"><h6>'+events[i].date+'</h6><h4>'+events[i].header+'</h4>'+events[i].copy+'</div></div>');
+
+        //timeline item parallax tween
+        var timelineItemScene = new ScrollMagic.Scene({
+            triggerHook: 'onEnter',
+            triggerElement: '#'+timelineItem
+          })
+          .on('start', function(e){
+            $(this.triggerElement()).find('.box').removeClass('dot');
+          })
+          .setTween( TweenMax.from($('#'+timelineItem).find('.box'), 0.5, {opacity:0, marginLeft:'+50px', ease: Power1.easeOut, onCompleteParams: [$('#'+timelineItem)], onComplete:function(item){
+            $(item).find('.box').addClass('dot');
+          }}) )
+          .addTo(controller);
+      }
+    });
+  });
+
+  //build quote display
+  $(document).on( 'quoteReady', function(e, data) {
+    quoteArray = data.quotes;
+    quoteID = util.getRandomID(0, quoteArray.length-1);
+    getQuote();
+    var quoteInterval = setInterval(function(){ 
+      $.when($('.quote > *').animate({
+        'opacity': '0'
+      }, 750)).done(function(){
+        getQuote(); 
+        $('.quote > *').animate({
+          'opacity': '1'
+        }, 750)
+      });
+    }, quoteIntervalDelay);
+  });
+
+  //build tweet display
+  $(document).on( 'tweetReady', function(e, data) {
+    tweetArray = data.tweets;
+    tweetID = util.getRandomID(0, tweetArray.length-1);
+    getTweet();
+    var tweetInterval = setInterval(function(){ 
+      $.when($('.twitter > *').animate({
+        'opacity': '0',
+        'marginTop': '+40px'
+      }, 750)).done(function(){
+        getTweet(); 
+        $('.twitter > *').css('marginTop', '-40px');
+        $('.twitter > *').animate({
+          'opacity': '1',
+          'marginTop': '0'
+        }, 600)
+      });
+    }, tweetIntervalDelay);
+  });
+
+  function getQuote(){
+    var val = quoteArray[quoteID];
+    quoteID = (quoteID==quoteArray.length-1) ? 0 : quoteID+1;
+    $('.quote .organization').text(val.organization);
+    $('.quote .quote-text').text(val.quote);
+    $('.quote .author').text('- '+val.author);
+  }
+
+  function getTweet(){
+    var val = tweetArray[tweetID];
+    tweetID = (tweetID==tweetArray.length-1) ? 0 : tweetID+1;
+    $('.twitter .tweet').html('<a href=\"'+val.url+'\" target=\"_blank\">'+val.tweet+'</a>');
+    $('.twitter .signature span').html('<a href=\"http://twitter.com/'+val.handle+'\" target=\"_blank\">'+val.handle+'</a>');
+  }
+
+// $(document).on( 'faqReady', function(e, data) {
+//   console.log('faqReady');
+//   var faqData = data.faq;
+//   console.log(faqData);
+//   //Get the HTML from the template   in the script tag​
+//   var theTemplateScript = $("#faq-template").html(); 
+
+//  //Compile the template​
+//   var theTemplate = Handlebars.compile (theTemplateScript); 
+//   $(".faqList").append (theTemplate(faqData)); 
+// });
 
 /////////////////////////
 //
@@ -90,16 +197,57 @@ $(document).ready(function(){
 //
 /////////////////////////
 
-  $(document).scroll(function() { 
+  $(document).scroll(function(){ 
     setNavPos($(this).scrollTop());
   });
 
-  //page down
-  $('#intro .fa-chevron-circle-down').on('click', function(){
-    $('html, body').animate({
-        scrollTop: $("#focusareas").offset().top+1
-    }, 500);
+  $(document).resize(function(){
+    setGalleryHeight();
   });
+
+  function setHandlers(){
+    //nav items
+    $('.nav a').on('click', function(e){
+      var section = $(this).attr('data-section');
+      goToByScroll($('#'+section));
+    });
+
+    $('.navbar-toggle').on('click', function(){
+      $(this).toggleClass('expanded');
+    });
+
+    //page down
+    $('#intro .fa-chevron-circle-down').on('click', function(){
+      $('html, body').animate({
+          scrollTop: $("#focusareas").offset().top+1
+      }, 500);
+    });
+
+    //gallery video playpause btn
+    $('#gallery .playpause-btn').on('click', function(e){
+      var vid = $(this).parent().find('video')["0"];
+
+      //video autplays on mute, first time pressing play unmutes and plays the video from the beginning
+      if (vid.muted){ 
+        if (!vid.paused){
+          vid.muted = false;
+          vid.currentTime = 0;
+          vid.play(); 
+          $(this).addClass('pause');
+        }
+      }
+      else{
+        if (vid.paused){
+          vid.play(); 
+          $(this).addClass('pause');
+        }
+        else{
+          vid.pause(); 
+          $(this).removeClass('pause');
+        }
+      }
+    });
+  }
 
 
 
@@ -109,19 +257,91 @@ $(document).ready(function(){
 //
 /////////////////////////
 
-  //set counter
+  //set days left counter
   function setCounter(){
     var daysLeft = counter.countdown().toString().split('');
     for (var i=daysLeft.length-1; i>=0; i--){
-      $('#counter').prepend('<span>'+daysLeft[i]+'</span>');
+      $('#counter').prepend('<div>'+daysLeft[i]+'</div>');
     }
   }
 
   function setGallery(){
-    //set gallery content heights
-    $('.quote-module').height($('.quote-module').width());
-    $('.twitter-module').height($('.twitter-module').width());
+    //reset video if on mobile
+    if (util.isMobile()){
+      var video = $('#gallery video')['0'];
+      video.muted = false;
+      video.autoplay = false;
+      video.loop = false;
+    }
+
+    setGalleryPhotos();
+    setGalleryHeight();
   }
+
+  //set gallery content heights
+  function setGalleryHeight(){
+    $('.quote').height(Math.round($('.quote').width()));
+    $('.twitter').height(Math.round($('.twitter').width()));
+    $('.video').height(Math.round($('.video').width()));
+  }
+
+  //select gallery photos randomly
+  function setGalleryPhotos(){
+    //create array of all available photo ids
+    photoIDArray = createPhotoIDArray();
+
+    //set gallery photos
+    $('#gallery .photo').each(function(e){
+      var id = util.getRandomVal(photoIDArray);
+      photoIDArray = util.removeFromArray(id, photoIDArray);
+      $(this).find('img').attr('src','assets/img/gallery/'+id+'.png').attr('id',id).fadeIn('slow');
+    });
+
+    //refresh gallery photos on an interval
+    var photoInterval = setInterval(function(){ 
+      //keep record of which photos have been updated, restore references once all photos have been cycled through 
+      if (photoReferenceArray.length==0) photoReferenceArray = $('#gallery .photo');
+      var newPhoto = util.getRandomVal(photoReferenceArray);
+      photoReferenceArray = util.removeFromArray(newPhoto, photoReferenceArray);
+
+      //get record of all current photo ids and add them to a restricted array
+      var currPhotos = $('#gallery .photo img');
+      var restricted = [];
+      for (var i=0;i<currPhotos.length;i++){
+        restricted.push(Number($(currPhotos[i]).attr('id')));
+      }
+
+      //get new random photo that is not currently displayed
+      function getRand() {
+        var rand;
+        do { 
+            rand = Number(util.getRandomVal(photoIDArray));
+        } while ($.inArray(rand, restricted) > -1);
+        return rand;
+      }
+      var newID = getRand();
+
+      //switch photo
+      $.when($(newPhoto).find('img').animate({
+        'opacity': '0'
+      }, 500)).done(function(){
+        $(newPhoto).find('img').attr('src','assets/img/gallery/'+newID+'.png').attr('id',newID);
+        $(newPhoto).find('img').animate({
+          'opacity': '1'
+        }, 500)
+      });
+    }, photoIntervalDelay);
+  }
+
+  function createPhotoIDArray(){
+    var numPhotos = 30;
+    var array = [];
+    for (var i=1;i<=numPhotos;i++){
+      array.push(i);
+    }
+    return array;
+  }
+
 
 });
 
@@ -187,3 +407,33 @@ particlesJS('particles-js', {
   /* Retina Display Support */
   retina_detect: true
 });
+(function() {
+	var util = window.util = {
+
+		getRandomID: function(min, max){
+			var rand = Math.floor((Math.random() * max) + min);
+			return rand;
+		},
+
+		getRandomVal: function(arr){
+			var rand = arr[Math.floor(Math.random() * arr.length)];
+			return rand;
+		},
+
+		removeFromArray: function(id, arr){
+			var tempArray = arr;
+			var pos = jQuery.inArray( id, tempArray );
+			if (pos > -1) {
+				tempArray.splice(pos, 1);
+			}
+			return tempArray;
+		},
+
+		isMobile: function(){
+			var isMob = false; 
+			// device detection
+			if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navigator.userAgent.substr(0,4))) isMob = true;
+			return isMob;
+		}
+	};
+})();
