@@ -270,18 +270,23 @@ $(document).ready(function(){
     $('.video').height(Math.round($('.video').width()));
   }
 
-  //select gallery photos randomly
-  function setGalleryPhotos(){
-    //create array of all available photo ids
-    photoIDArray = createPhotoIDArray();
+  function preloadImages() {
+    var img;
+    var remaining = photoIDArray.length;
+    for (var i=0; i<photoIDArray.length; i++) {
+      img = new Image();
+      img.onload = function() {
+          --remaining;
+          if (remaining <= 0) {
+              galleryLoaded();
+          }
+      };
+      img.src = 'assets/img/gallery/'+photoIDArray[i]+'.png';
+    }
+  }
 
-    //set gallery photos
-    $('#gallery .photo').each(function(e){
-      var id = util.getRandomVal(photoIDArray);
-      photoIDArray = util.removeFromArray(id, photoIDArray);
-      $(this).find('img').attr('src','assets/img/gallery/'+id+'.png').attr('id',id).fadeIn('slow');
-    });
-
+  function galleryLoaded(){
+    console.log('gallery loaded');
     //refresh gallery photos on an interval
     var photoInterval = setInterval(function(){ 
       //keep record of which photos have been updated, restore references once all photos have been cycled through 
@@ -318,10 +323,25 @@ $(document).ready(function(){
     }, photoIntervalDelay);
   }
 
+  //select gallery photos randomly
+  function setGalleryPhotos(){
+    //create array of all available photo ids
+    photoIDArray = createPhotoIDArray();
+    preloadImages();
+
+    //set gallery photos
+    $('#gallery .photo').each(function(e){
+      var id = util.getRandomVal(photoIDArray);
+      photoIDArray = util.removeFromArray(id, photoIDArray);
+      $(this).find('img').attr('src','assets/img/gallery/'+id+'.png').attr('id',id).fadeIn('slow');
+    });
+
+  }
+
   function createPhotoIDArray(){
-    var numPhotos = 30;
+    var numPhotos = 31;
     var array = [];
-    for (var i=1;i<=numPhotos;i++){
+    for (var i=1;i<numPhotos;i++){
       array.push(i);
     }
     return array;

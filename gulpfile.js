@@ -37,7 +37,6 @@ gulp.task('copy-resources', function() {
   	'./node_modules/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
     './node_modules/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js',
     './node_modules/gsap/src/minified/TweenMax.min.js',
-  	'./node_modules/handlebars/dist/handlebars.min.js',
   	'./node_modules/gsap/src/minified/jquery.gsap.min.js',
   	'./node_modules/jquery/dist/jquery.min.js'
   	])
