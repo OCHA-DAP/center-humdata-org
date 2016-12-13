@@ -64,6 +64,7 @@ ul{
 		line-height: 68px;
 		padding: 0 40px;
 		margin-top: 14px;
+		margin-left: -3px;
 		&:hover{
 			background-color: $white;
 			color: #3d3030;
@@ -93,7 +94,7 @@ ul{
 input{
 	border: 0;
 	padding: 0 15px;
-	&#contact-input{
+	&[type="email"]{
 		color: $gray33;
 		font-family: $serif-book;
 		font-size: 24px;
@@ -166,7 +167,7 @@ section{
 		font-family: $serif-semibold;
 		font-size: 50px;
 		letter-spacing: 1px;
-		margin-top: 55px;
+		margin-top: 20px;
 		div{
 			background-color: $white;
 			color: $green;

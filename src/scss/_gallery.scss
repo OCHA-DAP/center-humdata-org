@@ -37,12 +37,22 @@
 		}
 		&.video{
 			background-color: $black;
+			overflow: hidden;
 			video{
 				left: 0;
 				position: absolute;
 				top: 50%;
 				transform: translateY(-50%);
 				width: 100%;
+			}
+			&.preview{
+				video{
+					height: 100%;
+					width: auto;
+					top: 0;
+					left: 50%;
+					transform: translate(-50%, 0);
+				}
 			}
 			.playpause-btn{
 				opacity: 0;

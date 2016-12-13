@@ -4,13 +4,13 @@ $(document).ready(function(){
   var stickyPos = 50;
   var quoteArray = [];
   var quoteID = 0;
-  var quoteIntervalDelay = 5000;
   var tweetArray = [];
   var tweetID = 0;
-  var tweetIntervalDelay = 5000;
+  var textIntervalDelay = 5000;
   var photoReferenceArray = [];
   var photoIDArray = [];
   var photoIntervalDelay = 5000;
+  var refreshMode = 'quote';
 
   init();
 
@@ -110,16 +110,6 @@ $(document).ready(function(){
     quoteArray = data.quotes;
     quoteID = util.getRandomID(0, quoteArray.length-1);
     getQuote();
-    var quoteInterval = setInterval(function(){ 
-      $.when($('.quote > *').animate({
-        'opacity': '0'
-      }, 750)).done(function(){
-        getQuote(); 
-        $('.quote > *').animate({
-          'opacity': '1'
-        }, 750)
-      });
-    }, quoteIntervalDelay);
   });
 
   //build tweet display
@@ -127,19 +117,6 @@ $(document).ready(function(){
     tweetArray = data.tweets;
     tweetID = util.getRandomID(0, tweetArray.length-1);
     getTweet();
-    var tweetInterval = setInterval(function(){ 
-      $.when($('.twitter > *').animate({
-        'opacity': '0',
-        'marginTop': '+40px'
-      }, 750)).done(function(){
-        getTweet(); 
-        $('.twitter > *').css('marginTop', '-40px');
-        $('.twitter > *').animate({
-          'opacity': '1',
-          'marginTop': '0'
-        }, 600)
-      });
-    }, tweetIntervalDelay);
   });
 
   function getQuote(){
@@ -206,7 +183,8 @@ $(document).ready(function(){
       var vid = $(this).parent().find('video')["0"];
 
       //video autplays on mute, first time pressing play unmutes and plays the video from the beginning
-      if (vid.muted){ 
+      if (vid.muted && $(this).parent().hasClass('preview')){ 
+        $(this).parent().removeClass('preview');
         if (!vid.paused){
           vid.muted = false;
           vid.currentTime = 0;
@@ -251,6 +229,35 @@ $(document).ready(function(){
       video.autoplay = false;
       video.loop = false;
     }
+
+    //start text refresh interval
+    var textInterval = setInterval(function(){ 
+      if (refreshMode=='quote'){
+        $.when($('.quote > *').animate({
+          'opacity': '0'
+        }, 750)).done(function(){
+          getQuote(); 
+          $('.quote > *').animate({
+            'opacity': '1'
+          }, 750)
+        });
+      }
+      else{
+        $.when($('.twitter > *').animate({
+          'opacity': '0',
+          'marginTop': '+40px'
+        }, 750)).done(function(){
+          getTweet(); 
+          $('.twitter > *').css('marginTop', '-40px');
+          $('.twitter > *').animate({
+            'opacity': '1',
+            'marginTop': '0'
+          }, 600)
+        });
+      }
+      refreshMode = (refreshMode=='quote') ? 'tweet' : 'quote';
+    }, textIntervalDelay);
+
 
     setGalleryPhotos();
     setGalleryHeight();
