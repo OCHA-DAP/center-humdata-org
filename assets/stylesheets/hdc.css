@@ -223,7 +223,8 @@ ul.bulleted li {
   font-size: 24px;
   line-height: 68px;
   padding: 0 40px;
-  margin-top: 14px; }
+  margin-top: 14px;
+  margin-left: -3px; }
 
 .btn.submit-btn:hover {
   background-color: #FFF;
@@ -252,7 +253,7 @@ input {
   border: 0;
   padding: 0 15px; }
 
-input#contact-input {
+input[type="email"] {
   color: #333;
   font-family: "Stag-Book";
   font-size: 24px;
@@ -324,7 +325,7 @@ section {
   font-family: "Stag-Semibold";
   font-size: 50px;
   letter-spacing: 1px;
-  margin-top: 55px; }
+  margin-top: 20px; }
 
 #intro #counter div {
   background-color: #FFF;
@@ -658,7 +659,8 @@ footer .row > div {
   height: 100%; }
 
 #gallery .content.video {
-  background-color: #000; }
+  background-color: #000;
+  overflow: hidden; }
 
 #gallery .content.video video {
   left: 0;
@@ -666,6 +668,13 @@ footer .row > div {
   top: 50%;
   transform: translateY(-50%);
   width: 100%; }
+
+#gallery .content.video.preview video {
+  height: 100%;
+  width: auto;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0); }
 
 #gallery .content.video .playpause-btn {
   opacity: 0;
