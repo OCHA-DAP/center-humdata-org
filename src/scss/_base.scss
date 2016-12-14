@@ -1,3 +1,7 @@
+.container-fluid{
+	max-width: 1600px;
+}
+
 ul{
 	margin: 0;
 	padding: 0;
@@ -38,10 +42,10 @@ ul{
 	margin: 20px 0;
 	text-decoration: none;
 	&.download-btn{
-		background-color: $green;
-		border: 2px solid transparent;
+		background-color: $white;
+		border: 2px solid $green;
+		color: $green;
 		border-radius: 30px;
-		color: $white;
 		font-family: $serif-med;
 		font-size: 18px;
 		line-height: 56px;
@@ -50,9 +54,9 @@ ul{
 		text-transform: uppercase;
 		width: 100%;
 		&:hover{
-			background-color: $white;
-			border: 2px solid $green;
-			color: $green;
+			background-color: $green;
+			border: 2px solid transparent;
+			color: $white;
 		}
 	}
 	&.submit-btn{
@@ -72,7 +76,7 @@ ul{
 	}
 	&.nav-btn{
 		border: 2px solid $white;
-		border-radius: 20px;
+		border-radius: 22px;
 		margin-top: 3px;
 		margin-left: 40px;
 		padding: 10px 40px;
@@ -151,13 +155,15 @@ section{
 		top: 0;
 		width: 100%;
 	}
-	.fa-chevron-circle-down{
+	.arrow-down{
+		background: transparent url('../img/icons/down-arrow.svg') no-repeat 0 0;
 		bottom: 25px;
-		color: $white;
 		cursor: pointer;
-		font-size: 30px;
-		margin-left: -13px;
+		height: 38px;
+		left: 50%;
+		transform: translateX(-50%);
 		position: absolute;
+		width: 38px;
 		&:hover{
 			opacity: 0.8;
 		}
@@ -327,6 +333,9 @@ section{
 footer{
 	background-color: $gray33;
 	padding: 140px 0 100px;
+	a{
+		line-height: 50px;
+	}
 	li{
 		line-height: 50px;
 	}

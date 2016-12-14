@@ -44,6 +44,8 @@
 				top: 50%;
 				transform: translateY(-50%);
 				width: 100%;
+				-webkit-transition: all 0.5s; 
+    		transition: all 0.5s;
 			}
 			&.preview{
 				video{

@@ -83,8 +83,9 @@
 					color: $green;
 					&.btn{
 						&.nav-btn{
-							background-color: $green;
-							color: $white;
+							background-color: $white;
+							border-color: $green;
+							color: $green;
 						}
 					}
 					&:hover{
@@ -94,9 +95,8 @@
 						}					
 						&.btn{
 							&.nav-btn{
-								background-color: $white;
-								border-color: $green;
-								color: $green;
+								background-color: $green;
+								color: $white;
 							}
 						}
 					}
