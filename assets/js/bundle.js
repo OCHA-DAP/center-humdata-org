@@ -178,7 +178,7 @@ $(document).ready(function(){
     setNavPos($(this).scrollTop());
   });
 
-  $(document).resize(function(){
+  $(window).resize(function(){
     setGalleryHeight();
   });
 
@@ -193,6 +193,7 @@ $(document).ready(function(){
       }
     });
 
+    //mobile navbar toggle 
     $('.navbar-toggle').on('click', function(){
       $(this).toggleClass('expanded');
       $('.navbar-default').toggleClass('expanded');
@@ -205,6 +206,7 @@ $(document).ready(function(){
       }, 500);
     });
 
+    //mailing list
     $('#mailing-list').on('click', function(e){
       var section = $(this).attr('data-section');
       goToByScroll($('#'+section));
