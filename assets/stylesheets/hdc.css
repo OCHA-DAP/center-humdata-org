@@ -171,6 +171,9 @@ p.small {
     font-size: 20px;
     line-height: 26px; } }
 
+.container-fluid {
+  max-width: 1600px; }
+
 ul {
   margin: 0;
   padding: 0; }
@@ -198,10 +201,10 @@ ul.bulleted li {
   text-decoration: none; }
 
 .btn.download-btn {
-  background-color: #1bb580;
-  border: 2px solid transparent;
+  background-color: #FFF;
+  border: 2px solid #1bb580;
+  color: #1bb580;
   border-radius: 30px;
-  color: #FFF;
   font-family: "Stag-Medium";
   font-size: 18px;
   line-height: 56px;
@@ -211,9 +214,9 @@ ul.bulleted li {
   width: 100%; }
 
 .btn.download-btn:hover {
-  background-color: #FFF;
-  border: 2px solid #1bb580;
-  color: #1bb580; }
+  background-color: #1bb580;
+  border: 2px solid transparent;
+  color: #FFF; }
 
 .btn.submit-btn {
   background-color: #3d3030;
@@ -232,7 +235,7 @@ ul.bulleted li {
 
 .btn.nav-btn {
   border: 2px solid #FFF;
-  border-radius: 20px;
+  border-radius: 22px;
   margin-top: 3px;
   margin-left: 40px;
   padding: 10px 40px; }
@@ -309,15 +312,17 @@ section {
   top: 0;
   width: 100%; }
 
-#intro .fa-chevron-circle-down {
+#intro .arrow-down {
+  background: transparent url("../img/icons/down-arrow.svg") no-repeat 0 0;
   bottom: 25px;
-  color: #FFF;
   cursor: pointer;
-  font-size: 30px;
-  margin-left: -13px;
-  position: absolute; }
+  height: 38px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  width: 38px; }
 
-#intro .fa-chevron-circle-down:hover {
+#intro .arrow-down:hover {
   opacity: 0.8; }
 
 #intro #counter {
@@ -470,6 +475,9 @@ footer {
   background-color: #333;
   padding: 140px 0 100px; }
 
+footer a {
+  line-height: 50px; }
+
 footer li {
   line-height: 50px; }
 
@@ -572,8 +580,9 @@ footer .row > div {
   color: #1bb580; }
 
 .navbar-default.sticky .navbar-nav > li > a.btn.nav-btn {
-  background-color: #1bb580;
-  color: #FFF; }
+  background-color: #FFF;
+  border-color: #1bb580;
+  color: #1bb580; }
 
 .navbar-default.sticky .navbar-nav > li > a:hover {
   color: #51e5b2; }
@@ -582,9 +591,8 @@ footer .row > div {
   color: #1bb580; }
 
 .navbar-default.sticky .navbar-nav > li > a:hover.btn.nav-btn {
-  background-color: #FFF;
-  border-color: #1bb580;
-  color: #1bb580; }
+  background-color: #1bb580;
+  color: #FFF; }
 
 /* bootstrap overrides */
 .nav {
@@ -667,7 +675,9 @@ footer .row > div {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 100%; }
+  width: 100%;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s; }
 
 #gallery .content.video.preview video {
   height: 100%;
