@@ -87,6 +87,7 @@ ul{
 		margin-left: -50px;
 		position: absolute;
 		top: 50%;
+  	-webkit-transform: translateY(-50%);
 		transform: translateY(-50%);
 		width: 100px;
 		&.pause{
@@ -168,6 +169,7 @@ section{
 		padding: 0 20px;
 		position: absolute;
 		top: 40%;
+  	-webkit-transform: translateY(-40%);
 		transform: translateY(-40%);
 		width: 100%;
 	}
@@ -183,6 +185,7 @@ section{
 		cursor: pointer;
 		height: 38px;
 		left: 50%;
+  	-webkit-transform: translateX(-50%);
 		transform: translateX(-50%);
 		position: absolute;
 		width: 38px;
@@ -310,6 +313,8 @@ section{
 					position: absolute;
 					right: 100%;
 					top: 25px;  
+					-webkit-transform-origin: 0 0;
+  				-webkit-transform: rotate(45deg);
 					transform-origin: 0 0;
     			transform: rotate(45deg);
     			box-shadow: -3px 3px 6px 0 rgba(0, 0, 0, 0.1);
@@ -412,6 +417,7 @@ footer{
 		.intro-content{
 			position: relative;
 			top: auto;
+  		-webkit-transform: none;
 			transform: none;
 		}
 	}
