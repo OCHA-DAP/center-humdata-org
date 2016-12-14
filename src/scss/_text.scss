@@ -12,7 +12,8 @@ h1{
 	font-family: $sans-brandon-bold;
 	font-size: 50px;
 	letter-spacing: 2px;
-	line-height: 45px;
+	line-height: 55px;
+	margin-bottom: 4px;
 	text-align: center;
 	text-transform: uppercase;
 }
@@ -102,15 +103,18 @@ p{
 }
 
 @media (max-width: 768px) {
-	h1{
-		font-size: 33px;
-		line-height: 36px;
-		span{
-			line-height: 24px !important;
-		}
-	}
 	h4{
 		font-size: 20px;
 		line-height: 26px;
+	}
+}
+
+@media (max-width: 736px) {
+	h1{
+		font-size: 31px;
+		line-height: 34px;
+		span{
+			line-height: 22px !important;
+		}
 	}
 }

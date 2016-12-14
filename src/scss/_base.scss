@@ -67,8 +67,8 @@ ul{
 		font-size: 24px;
 		line-height: 68px;
 		padding: 0 40px;
-		margin-top: 14px;
-		margin-left: -3px;
+		margin: 0;
+		vertical-align: top;
 		&:hover{
 			background-color: $white;
 			color: #3d3030;
@@ -95,6 +95,27 @@ ul{
 	}
 }
 
+// mailchimp styles
+#mc_embed_signup{
+	margin: 0 auto;
+	max-width: 636px;
+	.mc-field-group{
+		margin-top: 50px;
+	}
+	div{
+		&.mce_inline_error{
+			background-color: transparent !important;
+			color: red !important;
+			text-align: left;
+		}
+	}
+	#mce-error-response,
+	#mce-success-response{
+		margin-top: 10px;
+	}
+}
+
+
 input{
 	border: 0;
 	padding: 0 15px;
@@ -103,10 +124,10 @@ input{
 		font-family: $serif-book;
 		font-size: 24px;
 		line-height: 70px;
-		margin-top: 50px;
 		max-width: 448px;
 		padding-left: 35px;
 		width: 100%;
+		vertical-align: top;
 	}
 	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 	  color: #CCC;
@@ -144,6 +165,7 @@ section{
 	height: 100vh;
 	width: 100%;
 	.intro-content{
+		padding: 0 20px;
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
@@ -383,11 +405,29 @@ footer{
 	}
 }
 
-@media (max-width: 414px) {
+@media (max-width: 736px) {
+	#intro{
+		height: auto;
+		position: relative;
+		.intro-content{
+			position: relative;
+			top: auto;
+			transform: none;
+		}
+	}
 	#focusareas{
 		.area{
 			margin-right: 0;
 			position: relative;
+		}
+	}
+}
+
+
+@media (max-width: 667px) {
+	.btn{
+		&.submit-btn{
+			margin-top: 20px;
 		}
 	}
 }
