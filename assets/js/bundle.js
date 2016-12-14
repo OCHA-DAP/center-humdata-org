@@ -187,17 +187,27 @@ $(document).ready(function(){
     $('.nav a').on('click', function(e){
       var section = $(this).attr('data-section');
       goToByScroll($('#'+section));
+
+      if (util.isMobile()){
+        $('.navbar-toggle').click();
+      }
     });
 
     $('.navbar-toggle').on('click', function(){
       $(this).toggleClass('expanded');
+      $('.navbar-default').toggleClass('expanded');
     });
 
     //page down
-    $('#intro .fa-chevron-circle-down').on('click', function(){
+    $('#intro .arrow-down').on('click', function(){
       $('html, body').animate({
           scrollTop: $("#focusareas").offset().top+1
       }, 500);
+    });
+
+    $('#mailing-list').on('click', function(e){
+      var section = $(this).attr('data-section');
+      goToByScroll($('#'+section));
     });
 
     //gallery video playpause btn
@@ -247,7 +257,7 @@ $(document).ready(function(){
     //reset video if on mobile
     if (util.isMobile()){
       var video = $('#gallery video')['0'];
-      video.muted = false;
+      //video.muted = false;
       video.autoplay = false;
       video.loop = false;
     }
@@ -287,9 +297,9 @@ $(document).ready(function(){
 
   //set gallery content heights
   function setGalleryHeight(){
-    $('.quote').height(Math.round($('.quote').width()));
-    $('.twitter').height(Math.round($('.twitter').width()));
-    $('.video').height(Math.round($('.video').width()));
+    $('.quote').height(Math.floor($('.quote').width()));
+    $('.twitter').height(Math.floor($('.twitter').width()));
+    $('.video').height(Math.floor($('.video').width()));
   }
 
   function preloadImages() {
