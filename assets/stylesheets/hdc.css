@@ -323,9 +323,9 @@ section {
 #intro .intro-content {
   padding: 0 20px;
   position: absolute;
-  top: 40%;
-  -webkit-transform: translateY(-40%);
-  transform: translateY(-40%);
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
   width: 100%; }
 
 #intro #particles-js {
@@ -476,6 +476,9 @@ section {
   position: absolute;
   left: -70px;
   top: 36px; }
+
+#faq {
+  background-color: #FFF; }
 
 #faq p {
   margin: 16px 0 40px; }
