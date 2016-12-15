@@ -237,10 +237,15 @@ $(document).ready(function(){
     //reset video if on mobile
     if (util.isMobile()){
       var video = $('#gallery video')['0'];
-      //video.muted = false;
+      video.muted = false;
       video.autoplay = false;
       video.loop = false;
     }
+
+    // var videoArray = ['hdc-design-workshop.mp4', 'making-the-invisible-visible.mp4'];
+    // var randVidID = util.getRandomID(0,videoArray.length);
+    // document.getElementById('vid').src = 'assets/video/'+videoArray[randVidID];
+    // document.getElementById('hdcVideo').load();
 
     //start text refresh interval
     var textInterval = setInterval(function(){ 
@@ -298,7 +303,6 @@ $(document).ready(function(){
   }
 
   function galleryLoaded(){
-    console.log('gallery loaded');
     //refresh gallery photos on an interval
     var photoInterval = setInterval(function(){ 
       //keep record of which photos have been updated, restore references once all photos have been cycled through 
