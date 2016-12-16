@@ -328,6 +328,9 @@ section {
   transform: translateY(-50%);
   width: 100%; }
 
+#intro .intro-content > * {
+  opacity: 0; }
+
 #intro #particles-js {
   height: 100vh;
   position: absolute;
