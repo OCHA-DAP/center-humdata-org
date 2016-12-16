@@ -41,10 +41,10 @@ $(document).ready(function(){
   function setTweens(){
     //intro tween
     var introTween = new TimelineMax()
-      .add(TweenMax.from($('#intro h1'), 0.5, {opacity:0, ease: Power1.easeOut}), 1)
-      .add(TweenMax.from($('#intro .subtitle'), 1, {opacity:0, ease: Power1.easeOut}), 2)
-      .add(TweenMax.from($('#intro p'), 1, {opacity:0, ease: Power1.easeOut}), 3)
-      .add(TweenMax.from($('#intro #counter'), 1, {opacity:0, ease: Power1.easeOut}), 3);
+      .add(TweenMax.to($('#intro h1'), 0.5, {opacity:1, ease: Power1.easeOut}), 1)
+      .add(TweenMax.to($('#intro .subtitle'), 1, {opacity:1, ease: Power1.easeOut}), 2)
+      .add(TweenMax.to($('#intro p'), 1, {opacity:1, ease: Power1.easeOut}), 3)
+      .add(TweenMax.to($('#intro #counter'), 1, {opacity:1, ease: Power1.easeOut}), 3);
 
     var introScene = new ScrollMagic.Scene({
       triggerHook: 'onEnter',
@@ -136,17 +136,6 @@ $(document).ready(function(){
     $('.twitter .signature span').html('<a href=\"http://twitter.com/'+val.handle+'\" target=\"_blank\">'+val.handle+'</a>');
   }
 
-// $(document).on( 'faqReady', function(e, data) {
-//   console.log('faqReady');
-//   var faqData = data.faq;
-//   console.log(faqData);
-//   //Get the HTML from the template   in the script tag​
-//   var theTemplateScript = $("#faq-template").html(); 
-
-//  //Compile the template​
-//   var theTemplate = Handlebars.compile (theTemplateScript); 
-//   $(".faqList").append (theTemplate(faqData)); 
-// });
 
 /////////////////////////
 //
@@ -242,12 +231,9 @@ $(document).ready(function(){
       video.muted = false;
       video.autoplay = false;
       video.loop = false;
+      video.controls = true;
+      $('#gallery .video').removeClass('preview');
     }
-
-    // var videoArray = ['hdc-design-workshop.mp4', 'making-the-invisible-visible.mp4'];
-    // var randVidID = util.getRandomID(0,videoArray.length);
-    // document.getElementById('vid').src = 'assets/video/'+videoArray[randVidID];
-    // document.getElementById('hdcVideo').load();
 
     //start text refresh interval
     var textInterval = setInterval(function(){ 

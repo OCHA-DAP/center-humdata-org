@@ -172,6 +172,9 @@ section{
   	-webkit-transform: translateY(-50%);
 		transform: translateY(-50%);
 		width: 100%;
+		> * {
+			opacity: 0;
+		}
 	}
 	#particles-js{
 		height: 100vh;
