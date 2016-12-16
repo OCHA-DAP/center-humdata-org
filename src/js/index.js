@@ -25,6 +25,8 @@ $(document).ready(function(){
 
     setHandlers();
     setTweens();
+
+    pJS.particles.nb = 0;
   }
 
   //change nav display based on scroll position 

@@ -12,6 +12,7 @@ function launchParticlesJS(a,e){var i=document.querySelector("#"+a+" > canvas");
 /* @params: set the params [object, optional, default values : check particles.js] */
 
 /* config dom id (optional) + config particles params */
+var numParticles = (window.innerWidth<768) ? 50 : 150;
 particlesJS('particles-js', {
   particles: {
     color: '#fff',
@@ -19,7 +20,7 @@ particlesJS('particles-js', {
     opacity: .4,
     size: 3,
     size_random: true,
-    nb: 150,
+    nb: numParticles,
     line_linked: {
       enable_auto: true,
       distance: 100,

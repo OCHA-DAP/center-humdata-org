@@ -74,6 +74,14 @@
 			color: $white;
 			padding: 20px;
 			text-align: left;
+			.quote-text{
+				font-size: 16px;
+				line-height: 20px;
+			}
+			.author{
+				bottom: 10px;
+				position: absolute;
+			}
 		}
 		&.twitter{
 			background-color: $blue;
@@ -122,6 +130,14 @@
 			.span4 {
 	    	width: 100% !important;
 	    }
+		}
+		.content{
+			&.quote{
+				.quote-text{
+					font-size: 20px;
+					line-height: 26px;
+				}
+			}
 		}
 	}
 	@media only screen and (max-device-width: 1024px){
