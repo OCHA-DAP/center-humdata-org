@@ -751,6 +751,14 @@ footer .row > div {
   padding: 20px;
   text-align: left; }
 
+#gallery .content.quote .quote-text {
+  font-size: 16px;
+  line-height: 20px; }
+
+#gallery .content.quote .author {
+  bottom: 10px;
+  position: absolute; }
+
 #gallery .content.twitter {
   background-color: #55acee;
   height: 385px;
@@ -788,7 +796,10 @@ footer .row > div {
   #gallery .row-fluid .span8,
   #gallery .row-fluid .span6,
   #gallery .row-fluid .span4 {
-    width: 100% !important; } }
+    width: 100% !important; }
+  #gallery .content.quote .quote-text {
+    font-size: 20px;
+    line-height: 26px; } }
 
 @media only screen and (max-device-width: 1024px) {
   #gallery .playpause-btn {

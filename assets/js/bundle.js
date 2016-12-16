@@ -1,6 +1,6 @@
 (function() {
 	var counter = window.counter = {
-		TARGETDATE: new Date('March 19, 2017'),
+		TARGETDATE: new Date('March 25, 2017'),//March 30, 2017
 
 		countdown: function(){
 			var today = new Date();
@@ -47,6 +47,8 @@ $(document).ready(function(){
 
     setHandlers();
     setTweens();
+
+    pJS.particles.nb = 0;
   }
 
   //change nav display based on scroll position 
@@ -404,6 +406,7 @@ function launchParticlesJS(a,e){var i=document.querySelector("#"+a+" > canvas");
 /* @params: set the params [object, optional, default values : check particles.js] */
 
 /* config dom id (optional) + config particles params */
+var numParticles = (window.innerWidth<768) ? 50 : 150;
 particlesJS('particles-js', {
   particles: {
     color: '#fff',
@@ -411,7 +414,7 @@ particlesJS('particles-js', {
     opacity: .4,
     size: 3,
     size_random: true,
-    nb: 150,
+    nb: numParticles,
     line_linked: {
       enable_auto: true,
       distance: 100,
