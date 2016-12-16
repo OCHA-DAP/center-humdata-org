@@ -246,11 +246,11 @@ ul.bulleted li {
 .btn.playpause-btn {
   background: transparent url("../img/play.svg") no-repeat 0 0;
   height: 100px;
-  margin-left: -50px;
+  left: 50%;
   position: absolute;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   width: 100px; }
 
 .btn.playpause-btn.pause {
@@ -280,6 +280,7 @@ input[type="email"] {
   color: #333;
   font-family: "Stag-Book";
   font-size: 24px;
+  height: 70px;
   line-height: 70px;
   max-width: 448px;
   padding-left: 35px;
