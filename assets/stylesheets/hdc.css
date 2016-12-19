@@ -304,6 +304,8 @@ input:-moz-placeholder {
   color: #CCC; }
 
 section {
+  margin: 0 auto;
+  max-width: 1600px;
   padding: 85px 0;
   text-align: center; }
 
@@ -322,6 +324,7 @@ section {
   width: 100%; }
 
 #intro .intro-content {
+  max-width: 1600px;
   padding: 0 20px;
   position: absolute;
   top: 50%;
@@ -608,17 +611,6 @@ footer .row > div {
   background-color: #FFF;
   color: #1bb580; }
 
-.navbar-default .navbar-brand {
-  background-color: #FFF;
-  color: #000;
-  height: 36px;
-  line-height: 36px;
-  margin-top: 20px;
-  padding: 0 90px; }
-
-.navbar-default .navbar-brand:hover {
-  background-color: #FFF; }
-
 .navbar-default.sticky {
   background-color: #FFF; }
 
@@ -643,7 +635,14 @@ footer .row > div {
   background-color: #1bb580;
   color: #FFF; }
 
-/* bootstrap overrides */
+.navbar > .container .navbar-brand {
+  background: transparent url("../img/logos/centrelogo_horizontal_white.svg") no-repeat 0 0;
+  margin: 26px 0 0 25px;
+  width: 200px; }
+
+.navbar.sticky > .container .navbar-brand {
+  background-image: url("../img/logos/centrelogo_horizontal_green.svg"); }
+
 .nav {
   padding-top: 20px; }
 
@@ -658,7 +657,11 @@ footer .row > div {
 
 @media (max-width: 768px) {
   .navbar-default .navbar-brand {
-    padding: 0 50px; } }
+    padding: 0 50px; }
+  .navbar > .container .navbar-brand {
+    margin-left: -10px; }
+  .btn.nav-btn {
+    padding: 10px 36px; } }
 
 @media (max-width: 736px) {
   .nav {
@@ -669,8 +672,13 @@ footer .row > div {
     transition: 0.25s ease-out; }
   .navbar-default.expanded {
     background-color: rgba(255, 255, 255, 0.9); }
+  .navbar-default.expanded > .container .navbar-brand {
+    background-image: url("../img/logos/centrelogo_horizontal_green.svg"); }
   .navbar > .container {
     padding: 0; }
+  .navbar > .container .navbar-brand {
+    margin-left: 30px;
+    margin-top: 20px; }
   .navbar-collapse {
     border: 0; }
   .navbar-collapse .navbar-nav > li > a {
