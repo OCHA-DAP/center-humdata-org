@@ -146,6 +146,8 @@ input{
 }
 
 section{
+	margin: 0 auto;
+	max-width: 1600px;
 	padding: 85px 0;
 	text-align: center;
 }
@@ -167,6 +169,7 @@ section{
 	height: 100vh;
 	width: 100%;
 	.intro-content{
+		max-width: 1600px;
 		padding: 0 20px;
 		position: absolute;
 		top: 50%;
