@@ -420,13 +420,18 @@ footer{
 
 @media (max-width: 736px) {
 	#intro{
-		height: auto;
-		position: relative;
-		.intro-content{
-			position: relative;
-			top: auto;
-  		-webkit-transform: none;
-			transform: none;
+		#counter{
+			font-size: 40px;
+			div{
+				font-size: 50px;
+				line-height: 80px;
+			}
+		}
+		.arrow-down{
+			bottom: 15px;
+		}
+		p{
+			margin-top: 60px;
 		}
 	}
 	#focusareas{
