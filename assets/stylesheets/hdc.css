@@ -539,14 +539,15 @@ footer .row > div {
     padding-right: 30px; } }
 
 @media (max-width: 736px) {
-  #intro {
-    height: auto;
-    position: relative; }
-  #intro .intro-content {
-    position: relative;
-    top: auto;
-    -webkit-transform: none;
-    transform: none; }
+  #intro #counter {
+    font-size: 40px; }
+  #intro #counter div {
+    font-size: 50px;
+    line-height: 80px; }
+  #intro .arrow-down {
+    bottom: 15px; }
+  #intro p {
+    margin-top: 60px; }
   #focusareas .area {
     margin-right: 0;
     position: relative; } }
@@ -677,8 +678,7 @@ footer .row > div {
   .navbar > .container {
     padding: 0; }
   .navbar > .container .navbar-brand {
-    margin-left: 30px;
-    margin-top: 20px; }
+    margin: 10px 30px 5px; }
   .navbar-collapse {
     border: 0; }
   .navbar-collapse .navbar-nav > li > a {
