@@ -3,6 +3,7 @@ var gulp   = require('gulp'),
 		del = require('del'),
     sass   = require('gulp-sass'),
     concat = require('gulp-concat'),
+    inject = require('gulp-inject'),
     merge = require('merge-stream'),
     runSequence = require('run-sequence'),
 		browserSync = require('browser-sync').create(),
@@ -27,8 +28,15 @@ gulp.task('build-css', function() {
 });
 
 gulp.task('build-html', function() {
-  return gulp.src('src/**/*.html')
-    .pipe(gulp.dest('dist'));
+    return gulp.src('src/**/*.html')
+        .pipe(inject(gulp.src(['./src/partials/head/*.html']), {
+            starttag: '<!-- inject:head:{{ext}} -->',
+            transform: function (filePath, file) {
+                // return file contents as string
+                return file.contents.toString('utf8')
+            }
+        }))
+        .pipe(gulp.dest('dist'));
 });
 
 gulp.task('copy-resources', function() {
