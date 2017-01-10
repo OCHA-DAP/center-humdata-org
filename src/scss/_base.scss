@@ -318,13 +318,13 @@ section{
 					content: "";
 					left: 2px;
 					position: absolute;
-					right: 100%;
+					right: auto;
 					top: 25px;  
 					-webkit-transform-origin: 0 0;
-  				-webkit-transform: rotate(45deg);
+  					-webkit-transform: rotate(45deg);
 					transform-origin: 0 0;
-    			transform: rotate(45deg);
-    			box-shadow: -3px 3px 6px 0 rgba(0, 0, 0, 0.1);
+    				transform: rotate(45deg);
+    				box-shadow: -3px 3px 6px 0 rgba(0, 0, 0, 0.1);
 				}
 				&.dot{
 					&:before{
