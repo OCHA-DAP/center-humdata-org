@@ -4,7 +4,6 @@
 
 		countdown: function(){
 			var today = new Date();
-			console.log(counter.TARGETDATE, today);
 			var oneDay = 24*60*60*1000;
 			var daysLeft = Math.round(Math.abs((counter.TARGETDATE.getTime() - today.getTime())/(oneDay)));
 			return daysLeft;
@@ -105,10 +104,10 @@ $(document).ready(function(){
     $.each( data.timeline.years, function( key, val ) {
       $('.timeline-chart').append('<div class="date-flag">'+val.year+'</div>');
       var now = new Date();
-      var isCurrent = (val.year == now.getFullYear()) ? true : false;
       var events = val.events;
       for (var i=0; i < events.length; i++){
-        var trackType = (isCurrent) ? 'dashed' : '';
+        var eventDate = new Date(events[i].date);
+        var trackType = (eventDate.getTime()>now.getTime()) ? 'dashed' : '';
         var position = (i==events.length-1 && isCurrent) ? 'last' : '';
         var timelineItem = 'timelineItem'+count;
         count++;
