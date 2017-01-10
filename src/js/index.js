@@ -82,10 +82,10 @@ $(document).ready(function(){
     $.each( data.timeline.years, function( key, val ) {
       $('.timeline-chart').append('<div class="date-flag">'+val.year+'</div>');
       var now = new Date();
-      var isCurrent = (val.year == now.getFullYear()) ? true : false;
       var events = val.events;
       for (var i=0; i < events.length; i++){
-        var trackType = (isCurrent) ? 'dashed' : '';
+        var eventDate = new Date(events[i].date);
+        var trackType = (eventDate.getTime()>now.getTime()) ? 'dashed' : '';
         var position = (i==events.length-1 && isCurrent) ? 'last' : '';
         var timelineItem = 'timelineItem'+count;
         count++;

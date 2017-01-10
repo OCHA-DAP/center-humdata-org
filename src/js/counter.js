@@ -4,7 +4,6 @@
 
 		countdown: function(){
 			var today = new Date();
-			console.log(counter.TARGETDATE, today);
 			var oneDay = 24*60*60*1000;
 			var daysLeft = Math.round(Math.abs((counter.TARGETDATE.getTime() - today.getTime())/(oneDay)));
 			return daysLeft;
