@@ -33,6 +33,7 @@ $(document).ready(function(){
   var photoIDArray = [];
   var photoIntervalDelay = 5000;
   var refreshMode = 'quote';
+  var videoArray = ['hdc-design-workshop.mp4','the-centre-for-humanitarian-design.mp4'];
 
   init();
 
@@ -289,6 +290,14 @@ $(document).ready(function(){
 
     setGalleryPhotos();
     setGalleryHeight();
+    setGalleryVideo();
+  }
+
+  //set gallery video, select randomly from set of videos
+  function setGalleryVideo(){
+    var id = Math.floor(Math.random() * videoArray.length);
+    var src = 'assets/video/'+videoArray[id];
+    $('video').attr('src', src);
   }
 
   //set gallery content heights
