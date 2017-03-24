@@ -252,9 +252,10 @@ section{
 			margin-right: 5px;
 			min-width: 62px;
 			padding: 14px 12px 10px;
-			&:last-child{
-				margin-right: 16px;
-			}
+			
+		}
+		span{
+			margin-left: 16px;
 		}
 	}
 	p{

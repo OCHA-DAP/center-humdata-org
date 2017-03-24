@@ -220,9 +220,18 @@ $(document).ready(function(){
 
   //set days left counter
   function setCounter(){
-    var daysLeft = counter.countdown().toString().split('');
-    for (var i=daysLeft.length-1; i>=0; i--){
-      $('#counter').prepend('<div>'+daysLeft[i]+'</div>');
+    var countdown = counter.countdown();
+    if (countdown < 1) {
+      $('#counter').hide();
+      $('.intro-content p').html('New site launching soon');
+    }
+    else {
+      var daysLeft = countdown.toString().split('');
+      for (var i=daysLeft.length-1; i>=0; i--){
+        var d = (daysLeft[i]>1) ? 'DAYS' : 'DAY';
+        $('#counter').prepend('<div>'+daysLeft[i]+'</div>');
+        $('#counter span').html(d);
+      }
     }
   }
 
