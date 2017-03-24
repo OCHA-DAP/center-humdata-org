@@ -401,8 +401,8 @@ section {
   min-width: 62px;
   padding: 14px 12px 10px; }
 
-#intro #counter div:last-child {
-  margin-right: 16px; }
+#intro #counter span {
+  margin-left: 16px; }
 
 #intro p {
   margin-top: 80px; }
